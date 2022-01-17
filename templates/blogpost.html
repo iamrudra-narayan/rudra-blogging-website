@@ -1,0 +1,53 @@
+{% extends "layout.html" %}
+{% block title %}Blog-Posts{% endblock %}
+{% block content %}
+<div class="container-contact">
+    <form  action="/post-a-blog" method="POST" enctype= "multipart/form-data">
+        <div class="form-group">
+        <p class="h">POST AN UPDATE</p>
+        {% if msg %}
+            <div class ="alert-success">
+            <li>{{ msg }}</li>
+            </div>
+        {% endif %}
+        <div class="form-group">
+            {{form.title(class_='form-control-title', placeholder='Title', autocomplete=off,autofocus=true)}}
+            
+            {% if form.title.errors %}
+            <div class ="alert-danger">
+                {% for error in form.title.errors %}
+                   <li>{{error}}</li>
+                {% endfor %}   
+            </div>
+            {% endif %}
+    
+            {{form.description(class_='form-control-desc', placeholder='Description', autocomplete=off,autofocus=true)}}
+            
+            {% if form.description.errors %}
+            <div class ="alert-danger">
+                {% for error in form.description.errors %}
+                   <li>{{error}}</li>
+                {% endfor %}   
+            </div>
+            {% endif %}
+            <div id="add">
+            {{form.file(class_='form-control')}}
+            </div>
+            
+            {% if form.file.errors %}
+            <div class ="alert-danger">
+                {% for error in form.file.errors %}
+                   <li>{{error}}</li>
+                {% endfor %}   
+            </div>
+            {% endif %}
+    
+        <div class="btn">
+            {{form.submit_button(class='btn-send')}}
+        </div>
+    </div>
+    {{form.csrf_token}}
+
+    </form>
+</div>
+{% endblock %}

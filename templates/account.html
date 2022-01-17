@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+{% block title %}My Account{% endblock %}
+{% block content %}
+<div class="container-contact">
+    <div class="heading-blog"><p>PROFILE</p></div>
+    <img src="https://img.icons8.com/color/144/000000/guest-male--v1.png"/>
+    <p style="font-size: 20px;font-weight:bold;">{{current_user.username}}</p>
+    <p style="font-size: 14px;font-weight:bold;margin-bottom:50px;">{{current_user.email}}</p>
+    <div class="create">
+    <a href="/post-a-blog"><img src="https://img.icons8.com/ios/60/000000/create-new.png"/></a>
+    <a href="/post-a-blog"><p>POST YOUR BLOGS</p></a>
+    </div>
+    <div class="heading"><p>Your Posts</p></div>
+    {% if posts %}
+    {% for post in posts %}
+    <div class="item">
+        <div class="c_img"><a href="/blogs/{{post.id}}"><img src="{{url_for('static',filename='pics/' + post.image_file)}}" alt="" /></a></div>
+        <div class="c-button"><a href="/blogs/{{post.id}}"><p class="header">{{post.title}}</p></a></div>
+        <div class="c-button"><p style="font-size:15px;font-weight:500;color:black;">{{post.description[:100]}}..............</div>
+        <div class="c-button"><p style="font-size:15px;font-weight:600;color:black;">{{post.date_posted.strftime('%Y-%m-%d')}}</p></div>
+        <div class="c-button"><p style="font-size:15px;font-weight:600;color:black;">Posted By:- {{post.author.username}}</p></div>
+        <div class="btn-r">
+            <a href="/update/{{post.id}}"><button class="btn-send">UPDATE</button></a>
+            <a href="/delete/{{post.id}}"><button class="btn-send">DELETE</button></a>
+        </div>
+    </div>
+    {% endfor %}
+    {% else %}
+    <p style="font-size:15px;font-weight:600;color:black;">No Posts You are Created. Please Create A Post By Clicking <a href="/post-a-blog">HERE</a></p>
+    {% endif %}
+</div>    
+{% endblock %}

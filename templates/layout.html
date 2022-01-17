@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="static/css/home.css" rel="stylesheet">
+    <link href="static/css/register.css" rel="stylesheet">
+    <link href="static/css/account.css" rel="stylesheet">
+    <link href="static/css/blogs.css" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/ac3759f334.js" crossorigin="anonymous"></script>
+    <link rel="icon" href="static/pics/gitar.png" type="image/gif" sizes="16x16">
+    <title>{% block title %}{% endblock %}</title>
+</head>
+<body>
+    <nav>
+        <a href="/"><label class="logo">BLOGGER</label></a>
+        <input type="checkbox" id="chk">
+        <ul>
+            {% if current_user.is_authenticated %}
+            <li><a href="/">Home</a></li>
+            <li><a href="/post-a-blog">New Post</a></li>
+            <li><a href="/account">Account</a></li>
+            <li><a href="/logout">Logout</a></li>
+            {% else %}
+            <li><a href="/">HOME</a></li>
+            <li><a href="/register">REGISTER</a></li>
+            <li><a href="/login">LOGIN</a></li>
+            {% endif %}
+        </ul>
+        <label for="chk" class="hide-menu-btn">
+            <i class="fas fa-bars"></i>
+        </label>
+    </nav>
+    {% block content %}{% endblock %}
+    <div class="footer"><p>Copyright &copy; Blogger 2021</p></div> 
+</body>
+</html>

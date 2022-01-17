@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="static/css/home.css" rel="stylesheet">
+    <link href="static/css/register.css" rel="stylesheet">
+    <link href="static/css/account.css" rel="stylesheet">
+    <link href="static/css/blogs.css" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/ac3759f334.js" crossorigin="anonymous"></script>
+    <title>UPDATE YOUR POST</title>
+    <style>
+    *{
+        padding: 0px;
+        margin: 0px;
+        text-decoration:none;
+        list-style: none;
+    }
+    body {
+        font-family: "montserrat";
+    }
+    nav {
+        height: 80px;
+        width: 100%;
+        background-color:rgb(8, 222, 250);
+        position: fixed;
+        border-bottom: 0.05px solid rgb(183, 129, 233);
+    }
+     .logo { 
+        font-size: 30px;
+        color: white;
+        font-weight: bold;
+        padding: 0px 80px;
+        position: relative;
+        line-height:80px
+    }
+    nav ul {
+        float:right;
+        margin-right: 20px;
+    }
+    nav ul li {
+        display: inline-block;
+        margin: 0 15px;
+        padding-top: 21px;
+    }
+    nav ul li a {
+        font-size: 15px;
+        padding: 0px 15px;
+        color: white;
+        font-weight: 700;
+        line-height: 40px;
+        letter-spacing: 1px;
+    }
+    nav ul li a:hover {
+        border: 2px solid black;
+        border-radius: 10px;
+        color: red;
+        background-color:rgb(13, 253, 193);
+    }
+    @media (min-width: 1107px) {
+        nav ul{
+            display:flex;
+            align-items: center;
+        }
+        nav .logo {
+            align-items: center;
+            float: left;
+            left:-15px;
+        }
+    
+    }
+    @media (max-width: 1097px) {
+        nav ul{
+            position: fixed;
+            width: 100%;
+            height: 100vh;
+            background-color: #34495e;
+            top: 80;
+            text-align: center;
+            left:100%;
+            transition: 0.7s;
+        }
+        .hide-menu-btn {
+            position: block;
+        }
+        .hide-menu-btn {
+            transition: 0.4s;
+            height:20px;
+            width:23px;
+            border: 2px solid black;
+            border-radius: 5px;
+        }
+        .hide-menu-btn {
+            position: absolute;
+            top: 28px;
+            right:38px;
+            display:flex;
+            align-items: center;
+            justify-content: center;
+        }
+        #chk:checked ~ ul {
+            left: 0;
+        }
+        nav ul li {
+            display: block;
+            margin: 8px 0;
+            line-height: 30px;
+        }
+        nav img {
+            float: right;
+            margin-right: 14px;
+            margin-top: -52px;
+        }
+        nav .logo {
+            margin-left: -35px;
+        }
+    }
+    @media (min-width: 1097px) {
+        nav #img img{
+            display: none;
+        }
+        .responsive-menu {
+            display: none;
+        }
+        .hide-menu-btn {
+            display:none;
+        }
+        
+    }
+    .responsive-menu {
+        height: 170px;
+        width: 100%;
+        background-color: rgb(8, 222, 250);
+        border-top: 3px solid black;
+        border-bottom: 3px solid black;
+        display: none;
+        transition: 0.4s;
+    }
+    #chk {
+        position: absolute;
+        visibility: hidden;
+        z-index: -1111;
+    }
+    .heading-blog {
+        height: 28px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding-top: -200px;
+        margin-bottom: 30px;
+    }
+    .heading-blog p{
+        color: blue !important;
+        text-transform: uppercase;
+        font-size: 30px;
+        font-weight: 700;
+    }
+    .heading {
+        height: 40px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 30px;
+        border-top: 1px solid rgb(12, 12, 22);
+        border-bottom: 1px solid rgb(12, 12, 22);
+    }
+    .heading p{
+        color: blue !important;
+        text-transform: uppercase;
+        font-size: 30px;
+        font-weight: 700;
+    }
+    .users {
+        height: content;
+        width: 100%;
+        background-color: white;
+        DISPLAY: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    
+    }
+    .users .user-details {
+        height: content;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        border-bottom: 1.5px solid black;
+    }
+    .footer {
+        height: 40px;
+        width: 99.9%;
+        background-color: yellow;
+        DISPLAY: flex;
+        align-items: center;
+        justify-content: center;
+        border-top: 1.5px dashed black;
+        border-bottom: 1.5px solid black;
+        margin-top: 200px;
+    }
+    .footer p {
+        font-size:17px;
+        color: black;
+        font-weight: bold;
+    }
+    .btn-r {
+        height: 60px;
+        width: 90%;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        flex-flow: row;
+    }
+    .btn-r .btn-send {
+        height: 40px;
+        width: 95px;
+        background-color:rgb(8, 222, 250);
+        color: white;
+        font-size: 15px;
+        font-weight: bold;
+        border-radius: 5px;
+        border:2px dashed rgb(8, 222, 250);
+        margin-bottom: 30px;
+        margin-top:-40px;
+        
+    }
+    .btn-r .btn-send:hover {
+        background-color: red;
+        color: yellow;
+        cursor: pointer;
+        border: 2px solid yellow;
+    }
+    .container-contact {
+        height: content;
+        width: 100%;
+        margin-bottom: 50px;
+        padding-top: 150px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-flow: column wrap;
+    }
+    .container-contact .form-group {
+        height: content;
+        width: 300px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-flow: column wrap;
+        margin-bottom: 20px;
+    }
+    .container-contact .form-group .h {
+        font-size: 35px;
+        font-weight: 700;
+        color:rgb(8, 222, 250);
+        font-family: sans-serif;
+        margin-bottom: 30px;
+    }
+    .container-contact .form-group p {
+        font-size: 20px;
+        font-weight: 100;
+        font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        color:rgb(12, 12, 12);
+        margin-bottom: 10px;
+    }
+    .container-contact .form-group .form-control {
+        height: 30px;
+        width: 95%;
+        padding: 2px;
+        color: black;
+        margin-bottom: 30px;
+    }
+    .container-contact .form-group .form-control-title {
+        height: 30px;
+        width: 280px;
+        padding: 2px;
+        color: black;
+        margin-bottom: 30px;
+    }
+    .container-contact .form-group .form-control-desc {
+        height: 70px;
+        width: 280px;
+        padding: 2px;
+        color: black;
+        margin-bottom: 30px;
+    
+    }
+    .container-contact .btn {
+        height: 40px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-flow: column wrap;
+        margin-bottom: 20px;
+        margin-top: 10px;
+    } 
+    .container-contact .btn .btn-send {
+        height: 40px;
+        width: 200px;
+        background-color:rgb(8, 222, 250);
+        color: white;
+        font-size: 20px;
+        font-weight: bold;
+        border-radius: 5px;
+        border:2px dashed rgb(8, 222, 250);
+    }
+    .container-contact .btn .btn-send:hover {
+        background-color: red;
+        color: yellow;
+        cursor: pointer;
+        border: 2px solid yellow;
+    }
+    .alert-danger {
+        height: content;
+        width: 97%;
+        padding: 3px;
+        border: 1px solid red;
+        list-style: none;
+        box-shadow: 2px;
+    }
+    .alert-danger li {
+        color: red;
+        font-size: 14px;
+        font-weight: 700;
+        font-family: "Helvetica Neue";
+    }
+    .alert-success {
+        height: content;
+        width: 97%;
+        padding: 3px;
+        border: 3px solid hsl(110, 100%, 50%);
+        list-style: none;
+        margin-bottom: 20px;
+    }
+    .alert-success li {
+        color: rgb(13, 67, 216);
+        font-size: 14px;
+        font-weight: 700;
+        font-family: "Helvetica Neue";
+    }
+</style>
+</head>
+<body>
+    <nav>
+        <a href="/"><label class="logo">EVENTORIES</label></a>
+        <input type="checkbox" id="chk">
+        <ul>
+            {% if current_user.is_authenticated %}
+            <li><a href="/">Home</a></li>
+            <li><a href="/post-a-blog">New Post</a></li>
+            <li><a href="/account">Account</a></li>
+            <li><a href="/logout">Logout</a></li>
+            {% else %}
+            <li><a href="/">HOME</a></li>
+            <li><a href="/register">REGISTER</a></li>
+            <li><a href="/login">LOGIN</a></li>
+            {% endif %}
+        </ul>
+        <label for="chk" class="hide-menu-btn">
+            <i class="fas fa-bars"></i>
+        </label>
+    </nav>
+<div class="container-contact">
+    <form  action="/update/{{blogs.id}}" method="POST" enctype= "multipart/form-data">
+        <div class="form-group">
+        <p class="h">UPDATE YOUR POST</p>
+        {% if msg %}
+            <div class ="alert-success">
+            <li>{{ msg }}</li>
+            </div>
+        {% endif %}
+        <div class="form-group">
+            {{form.title(class_='form-control-title', placeholder='Title')}}
+            
+            {% if form.title.errors %}
+            <div class ="alert-danger">
+                {% for error in form.title.errors %}
+                   <li>{{error}}</li>
+                {% endfor %}   
+            </div>
+            {% endif %}
+    
+            {{form.description(class_='form-control-desc', placeholder='Description')}}
+            
+            {% if form.description.errors %}
+            <div class ="alert-danger">
+                {% for error in form.description.errors %}
+                   <li>{{error}}</li>
+                {% endfor %}   
+            </div>
+            {% endif %}
+            <div id="add">
+            {{form.file(class_='form-control')}}
+            </div>
+            
+            {% if form.file.errors %}
+            <div class ="alert-danger">
+                {% for error in form.file.errors %}
+                   <li>{{error}}</li>
+                {% endfor %}   
+            </div>
+            {% endif %}
+    
+        <div class="btn">
+            {{form.submit_button(class='btn-send')}}
+        </div>
+    </div>
+    {{form.csrf_token}}
+
+    </form>
+</div>
+</body>
+</html>

@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+{% block title %}Home{% endblock %}
+{% block content %}
+<div class="container-contact">
+    {% if current_user.is_authenticated %}
+    <p style="font-size:20px;font-weight:700;color:rgb(1, 152, 252);margin-bottom:30px;">Welcome {{current_user.username}}.</p>
+    {% else %}
+    <div class="btn-r">
+        <a href="/register"><button class="btn-send">REGISTER</button></a>
+        <a href="/login"><button class="btn-send">LOGIN</button></a>
+    </div>
+    {% endif %}
+    {% if current_user.is_authenticated %}
+    <div class="heading"><p>Top Users</p></div>
+    <div class="users">
+        {% for post in post %}
+        <div class="profile-pic"><img src="https://img.icons8.com/color/70/000000/guest-male--v1.png"/></div>
+        <div class="user-details">
+            {{post.username}}<br>
+            {{post.email}}
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+    <div class="heading-blogs"><p>BLOG POSTS</p></div>
+    {% if posts %}
+    {% for post in posts %}
+    <div class="item">
+        <div class="c_img"><a href="/blogs/{{post.id}}"><img src="{{url_for('static',filename='pics/' + post.image_file)}}" alt="" /></a></div>
+        <div class="c-button"><a href="/blogs/{{post.id}}"><p class="header">{{post.title}}</p></a></div>
+        <div class="c-button"><p style="font-size:15px;font-weight:500;color:black;">{{post.description[:100]}}..........</p></div>
+        <div class="c-button"><p style="font-size:15px;font-weight:600;color:black;">{{post.date_posted.strftime('%Y-%m-%d')}}</p></div>
+        <div class="c-button"><p style="font-size:15px;font-weight:600;color:black;">Posted By:- {{post.author.username}}</p></div>
+    </div>
+    {% endfor %}
+    {% else %}
+    <p style="font-size:15px;font-weight:600;color:black;">No Posts Here. Please Create A Post By Clicking <a href="/post-a-blog">HERE</a></p>
+    {% endif %}
+</div> 
+{% endblock %}

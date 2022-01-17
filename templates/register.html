@@ -1,0 +1,67 @@
+{% extends "layout.html" %}
+{% block title %}Register-Page{% endblock %}
+{% block content %}
+    <div class="container-contact">
+     <form  action="/register" method="POST">
+        <div class="form-group">
+        <p class="h">REGISTER HERE</p> 
+        {% if msg %}
+            <div class ="alert-danger">
+            <li>{{ msg }}</li>
+            </div>
+        {% endif %}
+        </div>
+        <div class="form-group">
+        {{form.username(class_='form-control', placeholder='Username', autocomplete=off,autofocus=true)}}
+         
+        {% if form.username.errors %}
+        <div class ="alert-danger">
+            {% for error in form.username.errors %}
+               <li>{{error}}</li>
+            {% endfor %}   
+        </div>
+        {% endif %}
+
+        {{form.email(class_='form-control', placeholder='Email', autocomplete=off,autofocus=true)}}
+        
+        {% if form.email.errors %}
+        <div class ="alert-danger">
+            {% for error in form.email.errors %}
+               <li>{{error}}</li>
+            {% endfor %}   
+        </div>
+        {% endif %}
+
+        {{form.password(class_='form-control', placeholder='Password' ,autocomplete=off,autofocus=true)}}
+        
+        {% if form.password.errors %}
+        <div class ="alert-danger">
+            {% for error in form.password.errors %}
+               <li>{{errors}}</li>
+            {% endfor %}   
+        </div>
+        {% endif %}
+
+        {{form.confirm_pswd(class_='form-control', placeholder='Confirm Password', autocomplete=off,autofocus=true)}}
+        
+        {% if form.confirm_pswd.errors %}
+        <div class ="alert-danger">
+            {% for error in form.confirm_pswd.errors %}
+               <li>{{error}}</li>
+            {% endfor %}   
+        </div>
+        {% endif %}
+
+        <div class="btn">
+            {{form.submit_button(class='btn-send')}}
+        </div>
+
+        <div class="reffer">
+            <p class="ac">Already Have an Account.</p>
+            <a href="/login"><p style="color:rgb(0, 110, 255);font-size:16px;font-weight:bold;letter-spacing:0.5px;text-decoration:none;list-style:none;">Login Here</p></a>
+        </div>
+    {{form.csrf_token}}
+        </div>
+    </form>
+    </div>
+{% endblock %}

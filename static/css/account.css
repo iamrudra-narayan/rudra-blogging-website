@@ -1,0 +1,19 @@
+.create {
+    height: 80px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: -30px;
+    margin-bottom: 100px;
+}
+.create p{
+    color: rgb(0, 255, 179) !important;
+    text-transform: uppercase;
+    font-size: 30px;
+    font-weight: 700;
+}
+.create a:hover {
+    color: red;
+
+}
